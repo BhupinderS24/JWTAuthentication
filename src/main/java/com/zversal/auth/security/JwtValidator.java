@@ -19,6 +19,7 @@ public class JwtValidator {
 	private Environment environment;
 	
 	public JwtUser validate(String token) {
+		System.out.println("Validator");
 		JwtUser jwtUser = null;
 		try {
 			Claims body = Jwts.parser().setSigningKey(/* "zversal" */ /* config.getSecretKey() */ environment.getProperty("security.jwt.token.secret-key")).parseClaimsJws(token).getBody();

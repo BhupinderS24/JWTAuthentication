@@ -31,7 +31,7 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new ProviderManager(Collections.singletonList(authenticationProvider));
 	}
 
-	@Bean
+	//@Bean
 	public JwtAuthenticationTokenFilter authenticationTokenFilter() {
 		JwtAuthenticationTokenFilter filter = new JwtAuthenticationTokenFilter();
 		filter.setAuthenticationManager(authenticationManager());
@@ -44,7 +44,7 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().authorizeRequests().antMatchers("**/zversal/**").authenticated().and().exceptionHandling()
 				.authenticationEntryPoint(entryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		http.addFilterBefore(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+		http.addFilterAfter(authenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 		http.headers().cacheControl();
 	}
 

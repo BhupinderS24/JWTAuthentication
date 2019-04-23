@@ -19,6 +19,7 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
 	@Override
 	protected void additionalAuthenticationChecks(UserDetails userDetails,
 			UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) throws AuthenticationException {
+		System.out.println("AdditionalAuthentication");
 	}
 
 	@Override
@@ -39,6 +40,7 @@ public class JwtAuthenticationProvider extends AbstractUserDetailsAuthentication
 
 	@Override
 	public boolean supports(Class<?> aClass) {
+		System.out.println("Supports");
 		return (JwtAuthenticationToken.class.isAssignableFrom(aClass));
 	}
 }
