@@ -1,0 +1,15 @@
+management:
+  security:
+    enabled: true
+    
+spring:
+  resources:
+    chain:
+      enabled: true
+
+security:
+  jwt:
+    token:
+      secret-key: zversal
+      expire-length: 5000      
+           
