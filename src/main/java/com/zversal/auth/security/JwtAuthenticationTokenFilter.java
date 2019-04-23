@@ -20,6 +20,7 @@ public class JwtAuthenticationTokenFilter extends AbstractAuthenticationProcessi
 	public Authentication attemptAuthentication(HttpServletRequest httpServletRequest,
 			HttpServletResponse httpServletResponse) throws AuthenticationException, IOException, ServletException {
 
+		System.out.println("ATTEMPT AUTHENTICATION");
 		String header = httpServletRequest.getHeader("Authorisation");
 
 		if (header == null || !header.startsWith("Token ")) {
@@ -34,6 +35,7 @@ public class JwtAuthenticationTokenFilter extends AbstractAuthenticationProcessi
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
+		System.out.println("SUCCESSFUL Authentication");
 		super.successfulAuthentication(request, response, chain, authResult);
 		chain.doFilter(request, response);
 	}

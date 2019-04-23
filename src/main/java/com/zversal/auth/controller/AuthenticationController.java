@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TokenController {
+public class AuthenticationController {
 
 	@Autowired
 	private UsersRepository repo;
@@ -20,7 +20,7 @@ public class TokenController {
 
 	private JwtUser jwtUser = new JwtUser();
 
-	public TokenController(JwtGenerator jwtGenerator) {
+	public AuthenticationController(JwtGenerator jwtGenerator) {
 		this.jwtGenerator = jwtGenerator;
 	}
 
