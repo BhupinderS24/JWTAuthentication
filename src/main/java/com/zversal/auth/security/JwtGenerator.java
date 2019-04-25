@@ -19,10 +19,10 @@ public class JwtGenerator {
 		Claims claims = Jwts.claims().setSubject(jwtUser.getUserName());
 		claims.put("email", jwtUser.getEmail());
 		String tokenExpirationInMilliSecondsString = env.getProperty("security.authentication.jwt.token-validity");
-		long tokenExpirationInMilliSecondsStringLong = Long.parseLong(tokenExpirationInMilliSecondsString);
+		long tokenExpirationInMilliSecondsLong = Long.parseLong(tokenExpirationInMilliSecondsString);
 		return Jwts.builder().setClaims(claims)
 				.signWith(SignatureAlgorithm.HS512, env.getProperty("security.authentication.jwt.secret-key"))
-				.setExpiration(new Date(System.currentTimeMillis() + tokenExpirationInMilliSecondsStringLong))
+				.setExpiration(new Date(System.currentTimeMillis() + tokenExpirationInMilliSecondsLong))
 				.compact();
 	}
 }
