@@ -7,7 +7,7 @@ public class JwtAuthenticationToken extends UsernamePasswordAuthenticationToken 
 	private String token;
 
 	public JwtAuthenticationToken(String token) {
-		super(null, null);
+		 super(null, null); 
 		this.token = token;
 	}
 
@@ -17,15 +17,5 @@ public class JwtAuthenticationToken extends UsernamePasswordAuthenticationToken 
 
 	public void setToken(String token) {
 		this.token = token;
-	}
-
-	@Override
-	public Object getCredentials() {
-		return null;
-	}
-
-	@Override
-	public Object getPrincipal() {
-		return null;
 	}
 }

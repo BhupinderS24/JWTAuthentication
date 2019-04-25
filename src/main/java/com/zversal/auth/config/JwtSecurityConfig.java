@@ -31,7 +31,6 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new ProviderManager(Collections.singletonList(authenticationProvider));
 	}
 
-	//@Bean
 	public JwtAuthenticationTokenFilter authenticationTokenFilter() {
 		JwtAuthenticationTokenFilter filter = new JwtAuthenticationTokenFilter();
 		filter.setAuthenticationManager(authenticationManager());

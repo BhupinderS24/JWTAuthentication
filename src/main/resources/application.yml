@@ -8,8 +8,8 @@ spring:
       enabled: true
 
 security:
-  jwt:
-    token:
+  authentication:
+    jwt:
       secret-key: zversal
-      expire-length: 5000      
+      token-validity: 50000     
            

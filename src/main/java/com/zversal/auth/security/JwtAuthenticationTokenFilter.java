@@ -1,14 +1,16 @@
 package com.zversal.auth.security;
 
-import com.zversal.auth.model.JwtAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import java.io.IOException;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+
+import com.zversal.auth.model.JwtAuthenticationToken;
 
 public class JwtAuthenticationTokenFilter extends AbstractAuthenticationProcessingFilter {
 
@@ -28,6 +30,7 @@ public class JwtAuthenticationTokenFilter extends AbstractAuthenticationProcessi
 		}
 
 		String authenticationToken = header.substring(6);
+
 		JwtAuthenticationToken token = new JwtAuthenticationToken(authenticationToken);
 		return getAuthenticationManager().authenticate(token);
 	}

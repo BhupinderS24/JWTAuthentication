@@ -3,6 +3,13 @@ package com.zversal.auth.controller;
 import com.zversal.auth.repository.UsersRepository;
 import com.zversal.auth.model.JwtUser;
 import com.zversal.auth.security.JwtGenerator;
+
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
@@ -17,7 +24,6 @@ public class AuthenticationController {
 	@Autowired
 	private UsersRepository repo;
 	private JwtGenerator jwtGenerator;
-
 	private JwtUser jwtUser = new JwtUser();
 
 	public AuthenticationController(JwtGenerator jwtGenerator) {
@@ -25,7 +31,7 @@ public class AuthenticationController {
 	}
 
 	@RequestMapping(value="/token",method=RequestMethod.POST)
-	public String generate(@RequestBody JwtUser jwt) throws JSONException {
+	public String generate(@RequestBody JwtUser jwt) throws JSONException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 		String user = jwt.getUserName();
 		jwtUser = repo.findByUserName(user);
 		if (jwtUser != null) {
